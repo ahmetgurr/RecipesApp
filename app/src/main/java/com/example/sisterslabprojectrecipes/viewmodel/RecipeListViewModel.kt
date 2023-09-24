@@ -10,19 +10,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RecipeListViewModel @Inject constructor(var rrepo : RecipeRepository) : ViewModel() {
-    var kisilerListesi = MutableLiveData<List<Recipe>>()
+    var recipeList = MutableLiveData<List<Recipe>>()
 
     init {
         loadRecipe()
-        kisilerListesi = rrepo.getRecipes()
+        recipeList = rrepo.getRecipes()
     }
 
     fun search(searchWord:String){
         rrepo.searchRecipe(searchWord)
     }
 
-    fun delete(recipe_name: Int){
-        rrepo.deleteRecipe(recipe_name)
+    fun delete(recipe_id: Int){
+        rrepo.deleteRecipe(recipe_id)
     }
 
     fun loadRecipe(){

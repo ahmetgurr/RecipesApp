@@ -3,10 +3,8 @@ package com.example.sisterslabprojectrecipes.adapter
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sisterslabprojectrecipes.R
@@ -16,12 +14,12 @@ import com.example.sisterslabprojectrecipes.util.gecisYap
 import com.example.sisterslabprojectrecipes.view.RecipeListFragmentDirections
 import com.example.sisterslabprojectrecipes.viewmodel.RecipeListViewModel
 import com.google.android.material.snackbar.Snackbar
-import java.math.MathContext
 
 
-class RecipeRecyclerAdapter(val recipeList: ArrayList<Recipe>,
-                            var mContext: Context,
-                            var viewModel:RecipeListViewModel )
+class RecipeRecyclerAdapter(
+    val recipeList: Context,
+    var mContext: List<Recipe>,
+    var viewModel:RecipeListViewModel )
                             : RecyclerView.Adapter<RecipeRecyclerAdapter.RecipeViewHolder>(){
 
     inner class RecipeViewHolder(tasarim: RecipeRecyclerRowBinding) : RecyclerView.ViewHolder(tasarim.root){

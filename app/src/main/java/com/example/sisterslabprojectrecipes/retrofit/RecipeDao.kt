@@ -10,20 +10,19 @@ import retrofit2.http.POST
 
 // GET veri çekmek
 // POST veri yolllamak
-
 interface RecipeDao {
 
     //https://api.canerture.com/recipes/get_recipes.php
     @GET("get_recipes.php")
     fun allRecipe(): Call<RecipeX>
 
-
+    //mercimeği arıyor daha sonra düzelt !!!!!!!!!!!!!!!!
     //https://api.canerture.com/recipes/search_recipe.php?query=mercimek
     @POST("search_recipe.php?query=mercimek")
     @FormUrlEncoded
     fun searchRecipe(@Field("recipe_name")recipe_name: String): Call<RecipeX>
 
-    //silme api si yok!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //silme api si yok!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @POST("kisiler/delete_kisiler.php")
     @FormUrlEncoded
     fun deleteRecipe(@Field("recipe_id") recipe_id:Int): Call<CRUD>
