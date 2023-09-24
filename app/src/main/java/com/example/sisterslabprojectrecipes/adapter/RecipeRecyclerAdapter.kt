@@ -17,8 +17,8 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class RecipeRecyclerAdapter(
-    val recipeList: Context,
-    var mContext: List<Recipe>,
+    val mContext: Context,
+    var recipeList: List<Recipe>,
     var viewModel:RecipeListViewModel )
                             : RecyclerView.Adapter<RecipeRecyclerAdapter.RecipeViewHolder>(){
 
@@ -69,12 +69,13 @@ class RecipeRecyclerAdapter(
     }
 
 
-
+/*
     fun recipeListUpdate(newRecipeList: List<Recipe>){
         recipeList.clear()
         recipeList.addAll(newRecipeList)
         notifyDataSetChanged()//adapteri güncellemek için
         Log.e("update", recipeList.toString())
     }
+ */
 
 }

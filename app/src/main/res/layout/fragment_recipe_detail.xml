@@ -93,7 +93,7 @@
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
         android:text="Güncelle"
-        android:onClick="@{() -> recipeDetailFragment.buttonUpdate(recipeObject.recipe_name, editTextAddName.getText().toString,editTextAddContent.getText().toString())}"
+        android:onClick="@{() -> recipeDetailFragment.buttonUpdate(recipeObject.recipe_id, editTextAddName.getText().toString,editTextAddContent.getText().toString())}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
