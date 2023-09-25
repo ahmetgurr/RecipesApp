@@ -10,6 +10,7 @@ import retrofit2.http.POST
 
 // GET veri çekmek
 // POST veri yolllamak
+//DAO Data Access Object= Veri Erişim Nesnesi /  veritabanı işlemlerini yönetmek için kullanılan bir tasarım desenidir
 interface RecipeDao {
 
     //https://api.canerture.com/recipes/get_recipes.php

@@ -31,7 +31,7 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         //tasarımı bağladık
         tasarim = DataBindingUtil.inflate(inflater, R.layout.fragment_recipe_list, container, false)
@@ -41,6 +41,7 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
         (activity as AppCompatActivity).setSupportActionBar(tasarim.toolbar)//toolbarı bağladık
 
 
+        //nUllPointerException hatası veriyor->RecipeRepository->gettAllRecipes() fonksiyonu içindeki// yeni fun yazarak giderildi
         viewModel.recipeList.observe(viewLifecycleOwner) {
             val adapter = RecipeRecyclerAdapter(requireContext(), it, viewModel)
             tasarim.recipeAdapter = adapter
@@ -65,7 +66,6 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         return tasarim.root
     }
-//**********************************************************************************************************************
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
