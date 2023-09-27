@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sisterslabprojectrecipes.R
-import com.example.sisterslabprojectrecipes.databinding.RecipeRecyclerRowBinding
+import com.example.sisterslabprojectrecipes.databinding.ItemRecipeBinding
 import com.example.sisterslabprojectrecipes.model.Recipe
 import com.example.sisterslabprojectrecipes.util.gecisYap
 import com.example.sisterslabprojectrecipes.view.RecipeListFragmentDirections
@@ -20,9 +20,9 @@ class RecipeRecyclerAdapter(var mContext: Context,
 )
     : RecyclerView.Adapter<RecipeRecyclerAdapter.RecipeViewHolder>() {
 
-    inner class RecipeViewHolder(tasarim: RecipeRecyclerRowBinding) : RecyclerView.ViewHolder(tasarim.root){
+    inner class RecipeViewHolder(tasarim: ItemRecipeBinding) : RecyclerView.ViewHolder(tasarim.root){
 
-        var tasarim: RecipeRecyclerRowBinding
+        var tasarim: ItemRecipeBinding
         init {
             this.tasarim = tasarim
         }
@@ -31,7 +31,7 @@ class RecipeRecyclerAdapter(var mContext: Context,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val layoutInflater = LayoutInflater.from(mContext)
-        val tasarim: RecipeRecyclerRowBinding = DataBindingUtil.inflate(layoutInflater,R.layout.recipe_recycler_row,parent,false)
+        val tasarim: ItemRecipeBinding = DataBindingUtil.inflate(layoutInflater,R.layout.item_recipe,parent,false)
         return RecipeViewHolder(tasarim)
     }
 
@@ -63,7 +63,7 @@ class RecipeRecyclerAdapter(var mContext: Context,
         t.imageViewDelete.setOnClickListener {
             Snackbar.make(it,"${recipe.recipe_name} silinsin mi?",Snackbar.LENGTH_LONG)
                 .setAction("EVET"){
-                    viewModel.delete(recipe.recipe_id)
+                   // viewModel.delete(recipe.recipe_id)
                 }.show()
         }
 

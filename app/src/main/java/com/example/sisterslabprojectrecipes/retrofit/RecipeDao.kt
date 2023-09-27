@@ -1,8 +1,11 @@
 package com.example.sisterslabprojectrecipes.retrofit
 
+import com.example.sisterslabprojectrecipes.model.BaseResponse
 import com.example.sisterslabprojectrecipes.model.CRUD
+import com.example.sisterslabprojectrecipes.model.RecipeRequest
 import com.example.sisterslabprojectrecipes.model.RecipeX
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -20,7 +23,7 @@ interface RecipeDao {
 
 
     @GET("get_recipes.php")
-    fun allRecipe(): Call<RecipeX>
+    fun allRecipe(): Call<CRUD>
 
 
 /*
@@ -38,14 +41,14 @@ interface RecipeDao {
 
 
     //https://api.canerture.com/recipes/get_recipe_detail.php?id=1
-    @GET("get_recipe_detail.php?id=1")
+    @GET("get_recipe_detail.php")
     suspend fun getRecipeDetail(@Query("id") recipe_id: Int): Call<RecipeX>
 
 
 
     //mercimeği arıyor daha sonra düzelt !!!!!!!!!!!!!!!!
     //https://api.canerture.com/recipes/search_recipe.php?query=mercimek
-    @POST("search_recipe.php?query=mercimek")
+    @POST("search_recipe.php")
     @FormUrlEncoded
     fun searchRecipe(@Field("recipe_name")recipe_name: String): Call<RecipeX>
 
@@ -56,16 +59,9 @@ interface RecipeDao {
 
      */
 
-    //silme api si yok!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    @POST("kisiler/delete_kisiler.php")
-    @FormUrlEncoded
-    fun deleteRecipe(@Field("recipe_id") recipe_id:Int): Call<CRUD>
-
     //https://api.canerture.com/recipes/add_recipe.php?=
-    @POST("add_recipe.php?=")
-    @FormUrlEncoded
-    fun addRecipe(@Field("recipe_name")recipe_name: String,
-                 @Field("recipe_content")recipe_content:String): Call<CRUD>
+    @POST("add_recipe.php")
+    fun addRecipe( @Body request : RecipeRequest): Call<BaseResponse>
 
     //https://api.canerture.com/recipes/update_recipe.php
     @POST("update_recipe.php")

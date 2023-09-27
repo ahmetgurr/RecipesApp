@@ -21,9 +21,7 @@ class RecipeListViewModel @Inject constructor(var rrepo : RecipeRepository) : Vi
         rrepo.searchRecipe(searchWord)
     }
 
-    fun delete(recipe_id: Int){
-        rrepo.deleteRecipe(recipe_id)
-    }
+
 
     fun loadRecipe(){
         rrepo.getAllRecipe()

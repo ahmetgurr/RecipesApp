@@ -8,7 +8,6 @@
     <data>
         <variable name="recipeListToolBarName" type="String" />
         <variable name="recipeListFragment" type="com.example.sisterslabprojectrecipes.view.RecipeListFragment" />
-        <variable name="recipeAdapter" type="com.example.sisterslabprojectrecipes.adapter.RecipeRecyclerAdapter" />
 
     </data>
 
@@ -21,9 +20,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/racipeListRV"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:adapter="@{recipeAdapter}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

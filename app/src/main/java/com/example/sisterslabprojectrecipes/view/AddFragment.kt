@@ -25,7 +25,7 @@ class AddFragment : Fragment() {
     ): View? {
         tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_add,container,false)
 
-        tasarim.addFragment = this
+        tasarim.viewModel = viewModel
         tasarim.addToolbarName = "Tarif Ekle"
 
         return tasarim.root
@@ -37,7 +37,7 @@ class AddFragment : Fragment() {
         viewModel = tempViewModel
     }
 
-    fun buttonSave(recipe_name:String, recipe_content:String){
-        viewModel.save(recipe_name, recipe_content)
+    fun buttonSave(recipeName:String, recipeContent:String){
+        viewModel.save(recipeName, recipeContent)
     }
 }

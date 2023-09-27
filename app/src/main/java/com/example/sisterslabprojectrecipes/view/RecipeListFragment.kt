@@ -35,6 +35,7 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
         savedInstanceState: Bundle?
     ): View {
 
+        //tasarim = FragmentRecipeListBinding.inflate(inflater)
         //tasarımı bağladık
         tasarim = DataBindingUtil.inflate(inflater, R.layout.fragment_recipe_list, container, false)
         tasarim.recipeListFragment = this
@@ -63,13 +64,23 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
 
          */
 
+//hata giderildi
         viewModel.recipeList.observe(viewLifecycleOwner) { data ->
             if (data != null) {
                 val adapter = RecipeRecyclerAdapter(requireContext(), data, viewModel)
-                tasarim.recipeAdapter = adapter
+                tasarim.racipeListRV.adapter = adapter
             }
         }
 
+        /*
+//güncel deneme
+        viewModel.loadRecipe()
+        viewModel.recipeList.observe(viewLifecycleOwner){
+            val adapter = RecipeRecyclerAdapter(requireContext(),it,viewModel)
+            tasarim.racipeListRV.adapter = adapter
+
+        }
+         */
 
 
 
@@ -80,18 +91,16 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
                 val item = menu.findItem(R.id.action_search)
                 val searchView = item.actionView as SearchView
 
-                searchView.setOnQueryTextListener(this@RecipeListFragment)
+                searchView.setOnQueryTextListener(this@RecipeListFragment)//arama işlemi için
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return false
             }
-
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         return tasarim.root
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel: RecipeListViewModel by viewModels()
@@ -117,4 +126,6 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onResume()
         viewModel.loadRecipe()
     }
+
+
 }
