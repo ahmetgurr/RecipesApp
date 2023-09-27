@@ -28,7 +28,7 @@ class RecipeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         tasarim = FragmentRecipeDetailBinding.inflate(inflater,container,false)
-        tasarim.recipeDetailFragment = this
+        tasarim.viewModel = viewModel
         tasarim.recipeDetailToolbarName = "Tarif Detay"
 
         //this fragment is getting data from RecipeListFragment->

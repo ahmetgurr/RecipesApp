@@ -3,6 +3,7 @@ package com.example.sisterslabprojectrecipes.retrofit
 import com.example.sisterslabprojectrecipes.model.BaseResponse
 import com.example.sisterslabprojectrecipes.model.CRUD
 import com.example.sisterslabprojectrecipes.model.RecipeRequest
+import com.example.sisterslabprojectrecipes.model.Recipe
 import com.example.sisterslabprojectrecipes.model.RecipeX
 import retrofit2.Call
 import retrofit2.http.Body
@@ -36,21 +37,22 @@ interface RecipeDao {
     //suspendli olan
     @GET("get_recipes.php")
     suspend fun allRecipe(): RecipeX
-
      */
 
 
     //https://api.canerture.com/recipes/get_recipe_detail.php?id=1
     @GET("get_recipe_detail.php")
-    suspend fun getRecipeDetail(@Query("id") recipe_id: Int): Call<RecipeX>
-
+     fun getRecipeDetail(@Query("id") recipe_id: Int): Call<RecipeX>
 
 
     //mercimeği arıyor daha sonra düzelt !!!!!!!!!!!!!!!!
     //https://api.canerture.com/recipes/search_recipe.php?query=mercimek
+
     @POST("search_recipe.php")
     @FormUrlEncoded
     fun searchRecipe(@Field("recipe_name")recipe_name: String): Call<RecipeX>
+
+
 
     /*
     //susbend qurey li
@@ -65,10 +67,16 @@ interface RecipeDao {
 
     //https://api.canerture.com/recipes/update_recipe.php
     @POST("update_recipe.php")
+    fun updateRecipe(@Body request : Recipe): Call<BaseResponse>
+
+   /*
+    //https://api.canerture.com/recipes/update_recipe.php
+    @POST("update_recipe.php")
     @FormUrlEncoded
     fun updateRecipe(@Field("recipe_id") recipe_id: Int,
                      @Field("recipe_name") recipe_name: String,
                      @Field("recipe_content")recipe_content: String): Call<CRUD>
+    */
 
 
 

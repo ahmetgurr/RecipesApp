@@ -45,6 +45,22 @@ class RecipeRepository (var rdao : RecipeDao){
         })
     }
 
+    fun updateRecipe(recipe: Recipe){
+        rdao.updateRecipe(recipe).enqueue(object : Callback<BaseResponse> {
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                val response = response.body()
+                Log.e("Tarif Guncelleme"," ${response?.message} - ${response?.success}")
+                getAllRecipe()
+            }
+
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+            }
+
+        })
+    }
+
+
+/*
 //tarif güncellemek için
 fun updateRecipe(recipe_id: Int, recipe_name: String, recipe_content: String) {
         rdao.updateRecipe(recipe_id,recipe_name,recipe_content).enqueue(object : Callback<CRUD>{
@@ -59,6 +75,7 @@ fun updateRecipe(recipe_id: Int, recipe_name: String, recipe_content: String) {
         })
 
     }
+ */
 
     //tarif arama için
     fun searchRecipe(searchWord:String){
