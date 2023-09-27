@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
+
 class AddViewModel  @Inject constructor(var rrepo : RecipeRepository): ViewModel() {
 
     fun save(recipe_name:String, recipe_content:String){

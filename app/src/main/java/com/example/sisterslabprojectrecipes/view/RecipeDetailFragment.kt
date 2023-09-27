@@ -10,7 +10,10 @@ import androidx.navigation.fragment.navArgs
 import com.example.sisterslabprojectrecipes.R
 import com.example.sisterslabprojectrecipes.databinding.FragmentRecipeDetailBinding
 import com.example.sisterslabprojectrecipes.viewmodel.RecipeDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class RecipeDetailFragment : Fragment() {
     private lateinit var tasarim: FragmentRecipeDetailBinding
     private lateinit var viewModel: RecipeDetailViewModel

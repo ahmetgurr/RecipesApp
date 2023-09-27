@@ -71,7 +71,7 @@ fun updateRecipe(recipe_id: Int, recipe_name: String, recipe_content: String) {
         })
     }
 
-    //tarif silmek için//silme işlemi tanımlı değil!!!
+    //tarif silmek için
     fun deleteRecipe(recipe_id: Int){
         rdao.deleteRecipe(recipe_id).enqueue(object  : Callback<CRUD>{
             override fun onResponse(call: Call<CRUD>, response: Response<CRUD>) {
@@ -107,8 +107,9 @@ fun updateRecipe(recipe_id: Int, recipe_name: String, recipe_content: String) {
  */
 
 
-
+/*
     //app açılırken boşsa nullPointerException hatasını gidermek için aşağıdaki gibi null kontrollü yazdık
+    //suspend yapınca hata alıyorum
 
 fun getAllRecipe() {
     rdao.allRecipe().enqueue(object : Callback<RecipeX> {
@@ -131,6 +132,42 @@ fun getAllRecipe() {
         }
     })
 }
+
+ */
+
+    fun getAllRecipe(){
+        rdao.allRecipe().enqueue(object : Callback<RecipeX>{
+            override fun onResponse(call: Call<RecipeX>?, response: Response<RecipeX>) {
+                val liste = response.body()!!.recipe
+                recipeList.value = liste
+            }
+            override fun onFailure(call: Call<RecipeX>?, t: Throwable?) {
+            }
+
+        })
+    }
+/*
+    fun repicesGet(){
+
+        rdao.allRecipe().enqueue(object : Callback<CRUD> {
+            override fun onResponse(call: Call<CRUD>?, response: Response<CRUD>) {
+                val list = response.body()!!.recipe
+                recipeList.value = list
+            }
+
+            override fun onFailure(call: Call<CRUD>?, t: Throwable?) {
+            }
+
+        })
+        Log.e("veriler","${rdao.allRecipe()}")
+    }
+
+
+ */
+
+
+
+
 
 
 }

@@ -22,8 +22,8 @@ import javax.inject.Singleton
 class AppModule {
     @Provides
     @Singleton
-    fun provideRecipeRepository(kdao: RecipeDao) : RecipeRepository{
-        return RecipeRepository(kdao)
+    fun provideRecipeRepository(rdao: RecipeDao) : RecipeRepository{
+        return RecipeRepository(rdao)
     }
 
     @Provides

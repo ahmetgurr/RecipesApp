@@ -7,6 +7,9 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
+
+//Field =
 
 // GET veri çekmek
 // POST veri yolllamak
@@ -14,14 +17,44 @@ import retrofit2.http.POST
 interface RecipeDao {
 
     //https://api.canerture.com/recipes/get_recipes.php
+
+
     @GET("get_recipes.php")
     fun allRecipe(): Call<RecipeX>
+
+
+/*
+    @GET("get_recipes.php")
+    suspend fun allRecipe(
+        @Query("id") recipe_id: Int
+    ): RecipeX
+ */
+    /*
+    //suspendli olan
+    @GET("get_recipes.php")
+    suspend fun allRecipe(): RecipeX
+
+     */
+
+
+    //https://api.canerture.com/recipes/get_recipe_detail.php?id=1
+    @GET("get_recipe_detail.php?id=1")
+    suspend fun getRecipeDetail(@Query("id") recipe_id: Int): Call<RecipeX>
+
+
 
     //mercimeği arıyor daha sonra düzelt !!!!!!!!!!!!!!!!
     //https://api.canerture.com/recipes/search_recipe.php?query=mercimek
     @POST("search_recipe.php?query=mercimek")
     @FormUrlEncoded
     fun searchRecipe(@Field("recipe_name")recipe_name: String): Call<RecipeX>
+
+    /*
+    //susbend qurey li
+    @GET("search_recipe.php")
+    suspend fun searchRecipe(@Query("query") searchWord: String): RecipeX
+
+     */
 
     //silme api si yok!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @POST("kisiler/delete_kisiler.php")

@@ -10,16 +10,14 @@ import androidx.fragment.app.viewModels
 import com.example.sisterslabprojectrecipes.R
 import com.example.sisterslabprojectrecipes.databinding.FragmentAddBinding
 import com.example.sisterslabprojectrecipes.viewmodel.AddViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class AddFragment : Fragment() {
     private lateinit var tasarim: FragmentAddBinding
     private lateinit var viewModel: AddViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel : AddViewModel by viewModels ()
-        viewModel = tempViewModel
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +29,12 @@ class AddFragment : Fragment() {
         tasarim.addToolbarName = "Tarif Ekle"
 
         return tasarim.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel : AddViewModel by viewModels ()
+        viewModel = tempViewModel
     }
 
     fun buttonSave(recipe_name:String, recipe_content:String){
