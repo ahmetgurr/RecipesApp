@@ -8,6 +8,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
@@ -17,6 +18,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.example.sisterslabprojectrecipes.R
 import com.example.sisterslabprojectrecipes.adapter.RecipeRecyclerAdapter
+import com.example.sisterslabprojectrecipes.databinding.FragmentAddBinding
 import com.example.sisterslabprojectrecipes.databinding.FragmentRecipeListBinding
 import com.example.sisterslabprojectrecipes.util.gecisYap
 import com.example.sisterslabprojectrecipes.viewmodel.AddViewModel
@@ -44,27 +46,6 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
         (activity as AppCompatActivity).setSupportActionBar(tasarim.toolbar)//toolbarı bağladık
 
 
-        //nUllPointerException hatası veriyor->RecipeRepository->gettAllRecipes() fonksiyonu içindeki// yeni fun yazarak giderildi
-     /*   viewModel.recipeList.observe(viewLifecycleOwner) {
-            val adapter = RecipeRecyclerAdapter(requireContext(), it, viewModel)
-            tasarim.recipeAdapter = adapter
-        }
-
-      */
-        /*
-        viewModel.recipeList.observe(viewLifecycleOwner) { data ->
-            if (data != null) {
-                val adapter = RecipeRecyclerAdapter(requireContext(), data, viewModel)
-                tasarim.recipeAdapter = adapter
-            } else {
-                // Eğer data null ise, uygun bir hata işleme mekanizması uygulayabilirsiniz.
-                // Örneğin, kullanıcıya bir hata mesajı gösterebilirsiniz.
-            }
-        }
-
-         */
-
-//hata giderildi
         viewModel.recipeList.observe(viewLifecycleOwner) { data ->
             if (data != null) {
                 val adapter = RecipeRecyclerAdapter(requireContext(), data, viewModel)
@@ -72,25 +53,12 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         }
 
-        /*
-//güncel deneme
-        viewModel.loadRecipe()
-        viewModel.recipeList.observe(viewLifecycleOwner){
-            val adapter = RecipeRecyclerAdapter(requireContext(),it,viewModel)
-            tasarim.racipeListRV.adapter = adapter
-
-        }
-         */
-
-
-
             requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.toolbar_menu, menu)//menüyü fragmenta bağladık
 
                 val item = menu.findItem(R.id.action_search)
                 val searchView = item.actionView as SearchView
-
                 searchView.setOnQueryTextListener(this@RecipeListFragment)//arama işlemi için
             }
 
@@ -109,7 +77,6 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     fun fabClick(it: View) {
         Navigation.gecisYap(R.id.action_recipeListFragment_to_addFragment, it)
-
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {

@@ -9,7 +9,6 @@
         <variable name="recipeDetailToolbarName" type="String" />
         <variable name="recipeObject" type="com.example.sisterslabprojectrecipes.model.Recipe" />
         <variable name="viewModel" type="com.example.sisterslabprojectrecipes.viewmodel.RecipeDetailViewModel" />
-
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,10 +78,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextAddContent"
-            android:text="@{recipeObject.recipe_content}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="İçerik" />
+            android:hint="İçerik"
+            android:text="@{recipeObject.recipe_content}" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

@@ -7,6 +7,8 @@
 
     <data>
             <variable name="selectedRecipe" type="com.example.sisterslabprojectrecipes.model.Recipe" />
+        <variable name="viewModel" type="com.example.sisterslabprojectrecipes.viewmodel.RecipeDetailViewModel" />
+
     </data>
 
 <LinearLayout
@@ -33,6 +35,7 @@
                 android:layout_height="21dp"
                 android:layout_margin="5dp"
                 android:text='@{selectedRecipe.recipe_name}'
+                android:onClick="@{() -> viewModel.detail(selectedRecipe.recipe_id)}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

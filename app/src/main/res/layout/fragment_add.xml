@@ -87,7 +87,6 @@
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
         android:text="Kaydet"
-        android:onClick="@{()-> viewModel.save(editTextAddName.getText().toString(), editTextAddContent.getText().toString())}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

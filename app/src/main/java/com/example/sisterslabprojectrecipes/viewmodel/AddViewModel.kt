@@ -15,10 +15,5 @@ class AddViewModel  @Inject constructor(var rrepo : RecipeRepository): ViewModel
     fun save(recipeName:String, recipeContent:String){
         val recipe = RecipeRequest(recipeName,recipeContent)
         rrepo.saveRecipe(recipe)
-
-
     }
-
-
-
 }

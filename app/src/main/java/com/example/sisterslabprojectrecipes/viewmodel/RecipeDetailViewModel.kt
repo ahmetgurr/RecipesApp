@@ -11,9 +11,15 @@ import javax.inject.Inject
 @HiltViewModel
 class RecipeDetailViewModel  @Inject constructor (var rrepo : RecipeRepository): ViewModel() {
 
+    val recipeDetail = MutableLiveData<Recipe>()
+
     fun update(recipeId:Int, recipeName:String, recipeContent:String){
         val recipe = Recipe(recipeId, recipeName, recipeContent)
         rrepo.updateRecipe(recipe)
     }
 
+    fun detail(recipeId:Int){
+        val recipe = rrepo.getRecipeDetail(recipeId)
+
+    }
 }

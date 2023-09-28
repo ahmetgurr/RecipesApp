@@ -26,7 +26,6 @@ class RecipeRecyclerAdapter(var mContext: Context,
         init {
             this.tasarim = tasarim
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
@@ -42,14 +41,13 @@ class RecipeRecyclerAdapter(var mContext: Context,
 /*
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val repice = recipeList.get(position)
-
         holder.tasarim.textView.text = "${repice.recipe_name}"
-
         //  holder.design.textView2.setOnClickListener {
         //    Navigation.findNavController(it).navigate(R.id.action_homePageFragment_to_detailFragment)
         // }
     }
  */
+
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val recipe = recipeList.get(position)
         val t = holder.tasarim
@@ -68,7 +66,6 @@ class RecipeRecyclerAdapter(var mContext: Context,
                    // viewModel.delete(recipe.recipe_id)
                 }.show()
         }
-
     }
 
 

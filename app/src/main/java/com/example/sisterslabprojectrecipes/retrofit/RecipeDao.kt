@@ -2,6 +2,7 @@ package com.example.sisterslabprojectrecipes.retrofit
 
 import com.example.sisterslabprojectrecipes.model.BaseResponse
 import com.example.sisterslabprojectrecipes.model.CRUD
+import com.example.sisterslabprojectrecipes.model.DetailResponse
 import com.example.sisterslabprojectrecipes.model.RecipeRequest
 import com.example.sisterslabprojectrecipes.model.Recipe
 import com.example.sisterslabprojectrecipes.model.RecipeX
@@ -34,8 +35,8 @@ interface RecipeDao {
     //https://api.canerture.com/recipes/get_recipe_detail.php?id=1
     @GET("get_recipe_detail.php")
     fun recipeDetail(
-        @Query("id") id: Int// int mi String mi bak!!!!!
-    ): Call<CRUD>
+        @Query("id") id: Int
+    ): Call<DetailResponse>
 
     //https://api.canerture.com/recipes/search_recipe.php?query=mercimek
     @GET("search_recipe.php")

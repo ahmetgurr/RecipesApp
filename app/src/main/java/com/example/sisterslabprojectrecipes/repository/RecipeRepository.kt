@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.sisterslabprojectrecipes.model.BaseResponse
 import com.example.sisterslabprojectrecipes.model.CRUD
+import com.example.sisterslabprojectrecipes.model.DetailResponse
 import com.example.sisterslabprojectrecipes.model.Recipe
 import com.example.sisterslabprojectrecipes.model.RecipeRequest
 import com.example.sisterslabprojectrecipes.model.RecipeX
@@ -18,12 +19,17 @@ class RecipeRepository (var rdao : RecipeDao){
 
     var recipeList: MutableLiveData<List<Recipe>>
 
+
+
     init {
         recipeList = MutableLiveData()
+
     }
+
     fun getRecipes(): MutableLiveData<List<Recipe>> {
         return recipeList
     }
+
     /*
     //getRecipesById fonksiyonu ile veritabanından id'ye göre çekebilir
     fun getRecipeById(recipe_id:Int): MutableLiveData<List<Recipe>> {
@@ -38,10 +44,8 @@ class RecipeRepository (var rdao : RecipeDao){
                 Log.e("Tarif Kayıt"," ${response?.message} - ${response?.success}")
                 getAllRecipe()
             }
-
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
-
         })
     }
 
@@ -54,6 +58,7 @@ class RecipeRepository (var rdao : RecipeDao){
             }
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
+
         })
     }
 /*
@@ -71,21 +76,18 @@ class RecipeRepository (var rdao : RecipeDao){
         })
     }
  */
-/*
+
 //id hatası buradan devam et !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //tafif detayı için
-    fun getRecipeDetail() {
-        rdao.recipeDetail().enqueue(object : Callback<CRUD> {
-            override fun onResponse(call: Call<CRUD>, response: Response<CRUD>) {
-                val liste = response.body()!!.recipe
-                recipeList.value = liste
+    fun getRecipeDetail(id:Int) {
+        rdao.recipeDetail(id).enqueue(object : Callback<DetailResponse> {
+            override fun onResponse(call: Call<DetailResponse>, response: Response<DetailResponse>) {
+                val response = response.body()!!.recipe
             }
-            override fun onFailure(call: Call<CRUD>, t: Throwable) {
+            override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
             }
         })
     }
- */
-
 
 
     //tarif arama için

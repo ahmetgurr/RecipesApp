@@ -20,9 +20,6 @@ class RecipeListViewModel @Inject constructor(var rrepo : RecipeRepository) : Vi
     fun search(searchWord:String){
         rrepo.searchRecipe(searchWord)
     }
-
-
-
     fun loadRecipe(){
         rrepo.getAllRecipe()
     }
