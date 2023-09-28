@@ -19,6 +19,8 @@ class RecipeDetailFragment : Fragment() {
     private lateinit var tasarim: FragmentRecipeDetailBinding
     private lateinit var viewModel: RecipeDetailViewModel
 
+    val args: RecipeDetailFragmentArgs by navArgs()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,21 +40,24 @@ class RecipeDetailFragment : Fragment() {
 
         //this fragment is getting data from RecipeListFragment->
         //başka fragmentten gelen veriyi almak ve göstermek için(RecipeListFragment'den)
-        val bundle: RecipeDetailFragmentArgs by navArgs()
-        val gelenTarif = bundle.recipe
-        tasarim.recipeObject = gelenTarif
+
+
+       val recipeId = args.recipeId
+
+        viewModel.getDetail(recipeId)
+
+        viewModel.recipeDetail.observe(viewLifecycleOwner){
+            it.let {
+                tasarim.recipeObject = it
+            }
+        }
+
+        //tasarim.recipeObject = recipe
 
         return tasarim.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-
-
-
-
     }
     fun buttonUpdate(recipe_id: Int, recipe_name: String, recipe_content:String) {
         viewModel.update(recipe_id,recipe_name,recipe_content)

@@ -23,8 +23,8 @@
         android:label="fragment_recipe_detail"
         tools:layout="@layout/fragment_recipe_detail" >
         <argument
-            android:name="recipe"
-            app:argType="com.example.sisterslabprojectrecipes.model.Recipe" />
+            android:name="recipeId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"

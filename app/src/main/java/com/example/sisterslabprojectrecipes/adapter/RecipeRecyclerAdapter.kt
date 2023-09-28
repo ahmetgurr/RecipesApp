@@ -57,7 +57,8 @@ class RecipeRecyclerAdapter(var mContext: Context,
         t.satirCard.setOnClickListener {
            //val gecis = RecipeListFragmentDirections.actionRecipeListFragmentToRecipeDetailFragment(recipe = recipe)
             //Navigation.gecisYap(it,gecis)
-            val gecis =RecipeListFragmentDirections.actionRecipeListFragmentToRecipeDetailFragment(recipe = recipe)
+            var id = recipe.recipe_id
+            val gecis = RecipeListFragmentDirections.actionRecipeListFragmentToRecipeDetailFragment(recipeId = id)
             Navigation.gecisYap(it,gecis)
         }
         t.imageViewDelete.setOnClickListener {

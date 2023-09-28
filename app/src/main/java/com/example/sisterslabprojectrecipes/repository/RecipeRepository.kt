@@ -18,16 +18,20 @@ import retrofit2.Response
 class RecipeRepository (var rdao : RecipeDao){
 
     var recipeList: MutableLiveData<List<Recipe>>
-
-
+    var recipeDetail: MutableLiveData<Recipe?>
 
     init {
         recipeList = MutableLiveData()
+        recipeDetail = MutableLiveData()
 
     }
 
     fun getRecipes(): MutableLiveData<List<Recipe>> {
         return recipeList
+    }
+
+    fun getDetail(): MutableLiveData<Recipe?> {
+        return recipeDetail
     }
 
     /*
@@ -79,14 +83,16 @@ class RecipeRepository (var rdao : RecipeDao){
 
 //id hatası buradan devam et !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //tafif detayı için
-    fun getRecipeDetail(id:Int) {
+    fun getRecipeDetail(id:Int)  : Recipe?{
         rdao.recipeDetail(id).enqueue(object : Callback<DetailResponse> {
             override fun onResponse(call: Call<DetailResponse>, response: Response<DetailResponse>) {
-                val response = response.body()!!.recipe
+                val recipe = response.body()?.recipe
+                recipeDetail.value = recipe
             }
             override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
             }
         })
+    return recipeDetail.value
     }
 
 
