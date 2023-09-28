@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.sisterslabprojectrecipes.R
 import com.example.sisterslabprojectrecipes.databinding.FragmentAddBinding
 import com.example.sisterslabprojectrecipes.viewmodel.AddViewModel
@@ -25,9 +26,16 @@ class AddFragment : Fragment() {
     ): View? {
         tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_add,container,false)
 
+        tasarim = FragmentAddBinding.inflate(inflater,container,false)
+
+        tasarim.buttonUpdate.setOnClickListener{
+            val gecis = AddFragmentDirections.actionAddFragmentToRecipeListFragment()
+            Navigation.findNavController(it).navigate(gecis)
+        }
+
+
         tasarim.viewModel = viewModel
         tasarim.addToolbarName = "Tarif Ekle"
-
         return tasarim.root
     }
 
@@ -39,5 +47,6 @@ class AddFragment : Fragment() {
 
     fun buttonSave(recipeName:String, recipeContent:String){
         viewModel.save(recipeName, recipeContent)
+        
     }
 }

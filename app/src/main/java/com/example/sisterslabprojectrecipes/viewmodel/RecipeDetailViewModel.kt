@@ -16,9 +16,4 @@ class RecipeDetailViewModel  @Inject constructor (var rrepo : RecipeRepository):
         rrepo.updateRecipe(recipe)
     }
 
-    //mutableLiveData kullan ve recipe tipinde bir değişken tanımla
-    fun detail (id:Int) {
-        val recipe = Recipe(id, recipe_name = "", recipe_content = "")
-        rrepo.getRecipeDetail(id)
-    }
 }

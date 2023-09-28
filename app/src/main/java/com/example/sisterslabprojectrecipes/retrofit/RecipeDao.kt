@@ -23,12 +23,19 @@ interface RecipeDao {
     //https://api.canerture.com/recipes/get_recipes.php
     @GET("get_recipes.php")
     fun allRecipe(): Call<CRUD>
+/*
+    //https://api.canerture.com/recipes/get_recipe_detail.php?id=1
+    @GET("get_recipe_detail.php")
+     fun recipeDetail(
+        @Query("query") query: String
+     ): Call<CRUD>
+ */
 
     //https://api.canerture.com/recipes/get_recipe_detail.php?id=1
     @GET("get_recipe_detail.php")
-     fun getRecipeDetail(
-        @Query("id") recipe_id: Int
-     ): Call<CRUD>
+    fun recipeDetail(
+        @Query("id") id: Int// int mi String mi bak!!!!!
+    ): Call<CRUD>
 
     //https://api.canerture.com/recipes/search_recipe.php?query=mercimek
     @GET("search_recipe.php")
@@ -38,11 +45,15 @@ interface RecipeDao {
 
     //https://api.canerture.com/recipes/add_recipe.php?=
     @POST("add_recipe.php")
-    fun addRecipe( @Body request : RecipeRequest): Call<BaseResponse>
+    fun addRecipe(
+        @Body request : RecipeRequest
+    ): Call<BaseResponse>
 
     //https://api.canerture.com/recipes/update_recipe.php
     @POST("update_recipe.php")
-    fun updateRecipe(@Body request : Recipe): Call<BaseResponse>
+    fun updateRecipe(
+        @Body request : Recipe
+    ): Call<BaseResponse>
 
    /*
     //https://api.canerture.com/recipes/update_recipe.php

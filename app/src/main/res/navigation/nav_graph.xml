@@ -29,5 +29,9 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.sisterslabprojectrecipes.view.AddFragment"
-        android:label="AddFragment" />
+        android:label="AddFragment" >
+        <action
+            android:id="@+id/action_addFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </fragment>
 </navigation>
