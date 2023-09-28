@@ -59,6 +59,20 @@ class RecipeRepository (var rdao : RecipeDao){
         })
     }
 
+    fun getRecipeDetail(id:Int){
+        rdao.getRecipeDetail(id).enqueue(object : Callback<CRUD> {
+            override fun onResponse(call: Call<CRUD>, response: Response<CRUD>) {
+                val response = response.body()
+                Log.e("Tarif Guncelleme"," ${response?.message} - ${response?.success}")
+                getAllRecipe()
+            }
+
+            override fun onFailure(call: Call<CRUD>, t: Throwable) {
+            }
+
+        })
+    }
+
 
 /*
 //tarif güncellemek için
@@ -77,6 +91,8 @@ fun updateRecipe(recipe_id: Int, recipe_name: String, recipe_content: String) {
     }
  */
 
+
+/*
     //tarif arama için
     fun searchRecipe(searchWord:String){
         rdao.searchRecipe(searchWord).enqueue(object : Callback<RecipeX> {
@@ -85,6 +101,18 @@ fun updateRecipe(recipe_id: Int, recipe_name: String, recipe_content: String) {
                 recipeList.value = liste
             }
             override fun onFailure(call: Call<RecipeX>, t: Throwable) {
+            }
+        })
+    }
+ */
+    //tarif arama için
+    fun searchRecipe(searchWord:String){
+        rdao.searchRecipe(searchWord).enqueue(object : Callback<CRUD> {
+            override fun onResponse(call: Call<CRUD>, response: Response<CRUD>) {
+                val liste = response.body()!!.recipe
+                recipeList.value = liste
+            }
+            override fun onFailure(call: Call<CRUD>, t: Throwable) {
             }
         })
     }
@@ -153,7 +181,6 @@ fun getAllRecipe() {
  */
 
     fun getAllRecipe(){
-
         rdao.allRecipe().enqueue(object : Callback<CRUD> {
             override fun onResponse(call: Call<CRUD>?, response: Response<CRUD>) {
                 val list = response.body()!!.recipe

@@ -21,45 +21,20 @@ import retrofit2.http.Query
 interface RecipeDao {
 
     //https://api.canerture.com/recipes/get_recipes.php
-
-
     @GET("get_recipes.php")
     fun allRecipe(): Call<CRUD>
 
-
-/*
-    @GET("get_recipes.php")
-    suspend fun allRecipe(
-        @Query("id") recipe_id: Int
-    ): RecipeX
- */
-    /*
-    //suspendli olan
-    @GET("get_recipes.php")
-    suspend fun allRecipe(): RecipeX
-     */
-
-
     //https://api.canerture.com/recipes/get_recipe_detail.php?id=1
     @GET("get_recipe_detail.php")
-     fun getRecipeDetail(@Query("id") recipe_id: Int): Call<RecipeX>
+     fun getRecipeDetail(
+        @Query("id") recipe_id: Int
+     ): Call<CRUD>
 
-
-    //mercimeği arıyor daha sonra düzelt !!!!!!!!!!!!!!!!
     //https://api.canerture.com/recipes/search_recipe.php?query=mercimek
-
-    @POST("search_recipe.php")
-    @FormUrlEncoded
-    fun searchRecipe(@Field("recipe_name")recipe_name: String): Call<RecipeX>
-
-
-
-    /*
-    //susbend qurey li
     @GET("search_recipe.php")
-    suspend fun searchRecipe(@Query("query") searchWord: String): RecipeX
-
-     */
+    fun searchRecipe(
+        @Query("query") query: String
+    ): Call<CRUD>
 
     //https://api.canerture.com/recipes/add_recipe.php?=
     @POST("add_recipe.php")
@@ -77,7 +52,5 @@ interface RecipeDao {
                      @Field("recipe_name") recipe_name: String,
                      @Field("recipe_content")recipe_content: String): Call<CRUD>
     */
-
-
 
 }

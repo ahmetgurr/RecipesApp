@@ -7,13 +7,10 @@
     >
     <data>
         <variable name="recipeDetailToolbarName" type="String" />
-        <variable name="recipeDetailFragment" type="com.example.sisterslabprojectrecipes.view.RecipeDetailFragment" />
         <variable name="recipeObject" type="com.example.sisterslabprojectrecipes.model.Recipe" />
         <variable name="viewModel" type="com.example.sisterslabprojectrecipes.viewmodel.RecipeDetailViewModel" />
 
     </data>
-
-
 
 <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -95,15 +92,12 @@
         android:layout_marginTop="20dp"
         android:text="Güncelle"
         android:onClick="@{() -> viewModel.update(recipeObject.recipe_id, editTextAddName.getText().toString,editTextAddContent.getText().toString())}"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         app:layout_constraintVertical_bias="0.0" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

@@ -66,7 +66,6 @@ class RecipeRecyclerAdapter(var mContext: Context,
                    // viewModel.delete(recipe.recipe_id)
                 }.show()
         }
-
     }
 
 
