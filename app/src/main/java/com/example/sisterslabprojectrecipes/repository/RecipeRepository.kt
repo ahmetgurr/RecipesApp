@@ -8,15 +8,15 @@ import com.example.sisterslabprojectrecipes.retrofit.RecipeDao
 //DAO'ya erişim sağlayan sınıf
 class RecipeRepository (var rdao : RecipeDao){
 
-
+    //tarifleri çekmek
     suspend fun getRecipes() = rdao.recipes()
-    //tarif kaydetmek için
+    //tarif kaydetmek
     suspend fun addRecipe(request: RecipeRequest) = rdao.addRecipe(request)
-
+    //tarif güncelemek
     suspend fun recipeUpdate(recipe: Recipe) = rdao.recipeUpdate(recipe)
-
+    //tarif detayı çekmek
     suspend fun recipeDetail(id:Int) = rdao.recipeDetail(id)
-
-    suspend fun foodSearch(searchWord:String) = rdao.foodSearch(searchWord)
+    //tarif aramak
+    suspend fun recipeSearch(searchWord:String) = rdao.foodSearch(searchWord)
 
 }

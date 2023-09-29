@@ -20,32 +20,18 @@ class AddFragment : Fragment() {
     private lateinit var binding: FragmentAddBinding
     private lateinit var viewModel: AddViewModel
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         //binding = DataBindingUtil.inflate(inflater,R.layout.fragment_add,container,false)
         binding = FragmentAddBinding.inflate(inflater,container,false)
-/*
-        binding.buttonUpdate.setOnClickListener{
-            viewModel.addRecipes(binding.editTextAddName.text.toString(), binding.editTextAddContent.text.toString())
-            val gecis = AddFragmentDirections.actionAddFragmentToRecipeListFragment()
-            Navigation.findNavController(it).navigate(gecis)
-            Toast.makeText(context,"Tarif Eklendi", Toast.LENGTH_SHORT).show()
-        }
- */
         val tempViewModel: AddViewModel by viewModels()
         viewModel = tempViewModel
 
-        binding.viewModel = viewModel
-        binding.addToolbarName = "Tarif Ekle"
+        //binding.viewModel = viewModel
+        //binding.addToolbarName = "Tarif Ekle"
         return binding.root
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //val tempViewModel : AddViewModel by viewModels ()
-        //viewModel = tempViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

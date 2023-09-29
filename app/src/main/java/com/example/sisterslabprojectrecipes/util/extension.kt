@@ -4,7 +4,7 @@ import android.view.View
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 
-//aynı baslık altında gecisYap fonksiyonunu oluşturduk, buradaki amaç ihtiyacımız doğrultusunda gerekli fonksiyonu kullanmak.
+//aynı baslık altında gecisYap fonksiyonunu oluşturdum, buradaki amaç ihtiyacımız doğrultusunda gerekli fonksiyonu kullanmak.
 //kullanıcıyı farklı ekranlara yönlendirmek için kullanıyoruz
 
 //fab butonuna tıklandıgında gecis yapmak için

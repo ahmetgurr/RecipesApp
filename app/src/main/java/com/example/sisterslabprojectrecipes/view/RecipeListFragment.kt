@@ -54,7 +54,6 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
             requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.toolbar_menu, menu)//menüyü fragmenta bağladık
-
                 val item = menu.findItem(R.id.action_search)
                 val searchView = item.actionView as SearchView
                 searchView.setOnQueryTextListener(this@RecipeListFragment)//arama işlemi için
@@ -68,6 +67,7 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
         return binding.root
     }
 
+    //ekleme sayfasına geçiş
     fun fabClick(it: View) {
         Navigation.gecisYap(R.id.action_recipeListFragment_to_addFragment, it)
     }
@@ -99,7 +99,4 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
         }
         return true
     }
-
-
-
 }

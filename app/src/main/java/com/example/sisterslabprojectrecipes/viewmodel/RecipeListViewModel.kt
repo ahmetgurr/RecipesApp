@@ -32,7 +32,7 @@ class RecipeListViewModel @Inject constructor(var rrepo : RecipeRepository) : Vi
 
     suspend fun foodSearch(searchWord: String) {
         viewModelScope.launch {
-            val response = rrepo.foodSearch(searchWord)
+            val response = rrepo.recipeSearch(searchWord)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     recipeSearch.value = response.body()
