@@ -20,9 +20,8 @@ class RecipeDetailViewModel  @Inject constructor (var rrepo : RecipeRepository):
     }
 
     fun getDetail(recipeId:Int) {
-
         viewModelScope.launch {
-            recipeDetail.postValue(rrepo.getRecipeDetail(recipeId))
+            recipeDetail.value = rrepo.getRecipeDetail(recipeId)
         }
         //recipeDetail.value =  rrepo.getRecipeDetail(recipeId)
     }

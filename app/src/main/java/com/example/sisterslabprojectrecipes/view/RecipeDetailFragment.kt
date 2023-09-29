@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.sisterslabprojectrecipes.R
 import com.example.sisterslabprojectrecipes.databinding.FragmentRecipeDetailBinding
@@ -42,14 +44,19 @@ class RecipeDetailFragment : Fragment() {
         //başka fragmentten gelen veriyi almak ve göstermek için(RecipeListFragment'den)
 
 
-       val recipeId = args.recipeId
+        tasarim.buttonUpdate.setOnClickListener{
+            viewModel.update( args.recipeId, tasarim.editTextAddName.text.toString(), tasarim.editTextAddContent.text.toString())
+            val gecis = RecipeDetailFragmentDirections.actionRecipeDetailFragmentToRecipeListFragment()
+            Navigation.findNavController(it).navigate(gecis)
+            Toast.makeText(context,"Tarif Güncellendi", Toast.LENGTH_SHORT).show()
+        }
 
+
+        val recipeId = args.recipeId
         viewModel.getDetail(recipeId)
 
         viewModel.recipeDetail.observe(viewLifecycleOwner){
-            it.let {
                 tasarim.recipeObject = it
-            }
         }
 
         //tasarim.recipeObject = recipe
