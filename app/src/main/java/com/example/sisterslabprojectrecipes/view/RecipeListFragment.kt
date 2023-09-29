@@ -45,7 +45,6 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         viewModel.getRecipes()
 
-
         viewModel.recipesList.observe(viewLifecycleOwner) {
             adapter = RecipeRecyclerAdapter(it, viewModel)
             binding.racipeListRV.adapter = adapter

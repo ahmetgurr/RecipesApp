@@ -54,6 +54,16 @@ class RecipeDetailFragment : Fragment() {
             viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.recipeUpdate(args.recipeId, foodName, recipe)
             }
+
+            viewModel.recipeDetail.observe(viewLifecycleOwner) { recipe ->
+                if (recipe != null) {
+                    Toast.makeText(requireContext(), "Tarif Güncellendi", Toast.LENGTH_SHORT).show()
+                    val action = RecipeDetailFragmentDirections.actionRecipeDetailFragmentToRecipeListFragment()
+                    Navigation.findNavController(it).navigate(action)
+                } else {
+                    Toast.makeText(requireContext(), "Tarif Güncellenmedi", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
         return binding.root
     }

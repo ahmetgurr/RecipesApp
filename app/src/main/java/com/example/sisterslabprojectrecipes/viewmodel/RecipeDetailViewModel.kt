@@ -3,6 +3,7 @@ package com.example.sisterslabprojectrecipes.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.sisterslabprojectrecipes.model.BaseRecipe
 import com.example.sisterslabprojectrecipes.model.DetailResponse
 import com.example.sisterslabprojectrecipes.model.Recipe
 import com.example.sisterslabprojectrecipes.repository.RecipeRepository
@@ -16,6 +17,7 @@ import javax.inject.Inject
 class RecipeDetailViewModel  @Inject constructor (var rrepo : RecipeRepository): ViewModel() {
 
     var recipeDetail = MutableLiveData<DetailResponse?>()
+    var recipeUpdateToast = MutableLiveData<String?>()
 
     suspend fun recipeDetail(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -36,6 +38,7 @@ class RecipeDetailViewModel  @Inject constructor (var rrepo : RecipeRepository):
                 if (response.isSuccessful) {
                     recipeDetail(recipe.recipe_id)
                 } else {
+                    recipeUpdateToast.value = response.body()?.message
                 }
             }
         }
