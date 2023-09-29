@@ -61,12 +61,6 @@ class RecipeRecyclerAdapter(var mContext: Context,
             val gecis = RecipeListFragmentDirections.actionRecipeListFragmentToRecipeDetailFragment(recipeId = id)
             Navigation.gecisYap(it,gecis)
         }
-        t.imageViewDelete.setOnClickListener {
-            Snackbar.make(it,"${recipe.recipe_name} silinsin mi?",Snackbar.LENGTH_LONG)
-                .setAction("EVET"){
-                   // viewModel.delete(recipe.recipe_id)
-                }.show()
-        }
     }
 
 

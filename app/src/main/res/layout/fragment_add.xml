@@ -14,13 +14,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.RecipeDetailFragment">
+    tools:context=".view.RecipeDetailFragment"
+    android:background="@color/beige">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarAdd"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="?attr/colorOnError"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:title="@{addToolbarName}"
@@ -60,7 +61,8 @@
             android:id="@+id/editTextAddName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tarif Adı" />
+            android:hint="Tarif Adı"
+            android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
