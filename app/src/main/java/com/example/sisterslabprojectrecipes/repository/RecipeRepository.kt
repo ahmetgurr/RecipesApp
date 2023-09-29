@@ -17,127 +17,15 @@ import retrofit2.Response
 //DAO'ya erişim sağlayan sınıf
 class RecipeRepository (var rdao : RecipeDao){
 
-    var recipeList: MutableLiveData<List<Recipe>>
-    var recipeDetail: MutableLiveData<Recipe?>
 
-    init {
-        recipeList = MutableLiveData()
-        recipeDetail = MutableLiveData()
-
-    }
-
-    fun getRecipes(): MutableLiveData<List<Recipe>> {
-        return recipeList
-    }
-
-    fun getDetail(): MutableLiveData<Recipe?> {
-        return recipeDetail
-    }
-
-    /*
-    //getRecipesById fonksiyonu ile veritabanından id'ye göre çekebilir
-    fun getRecipeById(recipe_id:Int): MutableLiveData<List<Recipe>> {
-        return recipeList
-    }
-     */
+    suspend fun getRecipes() = rdao.recipes()
     //tarif kaydetmek için
-    fun saveRecipe(recipe: RecipeRequest){
-        rdao.addRecipe(recipe).enqueue(object : Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                val response = response.body()
-                Log.e("Tarif Kayıt"," ${response?.message} - ${response?.success}")
-                getAllRecipe()
-            }
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-            }
-        })
-    }
+    suspend fun addRecipe(request: RecipeRequest) = rdao.addRecipe(request)
 
-    fun updateRecipe(recipe: Recipe){
-        rdao.updateRecipe(recipe).enqueue(object : Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                val response = response.body()
-                Log.e("Tarif Guncelleme"," ${response?.message} - ${response?.success}")
-                getAllRecipe()
-            }
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-            }
+    suspend fun recipeUpdate(recipe: Recipe) = rdao.recipeUpdate(recipe)
 
-        })
-    }
-/*
-    fun getRecipeDetail(id:Int){
-        rdao.getRecipeDetail(id).enqueue(object : Callback<CRUD> {
-            override fun onResponse(call: Call<CRUD>, response: Response<CRUD>) {
-                val response = response.body()
-                Log.e("Tarif Guncelleme"," ${response?.message} - ${response?.success}")
-                getAllRecipe()
-            }
+    suspend fun recipeDetail(id:Int) = rdao.recipeDetail(id)
 
-            override fun onFailure(call: Call<CRUD>, t: Throwable) {
-            }
-
-        })
-    }
- */
-
-//id hatası buradan devam et !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //tafif detayı için
-    fun getRecipeDetail(id:Int)  : Recipe?{
-        rdao.recipeDetail(id).enqueue(object : Callback<DetailResponse> {
-            override fun onResponse(call: Call<DetailResponse>, response: Response<DetailResponse>) {
-                val recipe = response.body()?.recipe
-                recipeDetail.value = recipe
-            }
-            override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
-            }
-        })
-    return recipeDetail.value
-    }
-
-
-    //tarif arama için
-    fun searchRecipe(searchWord:String){
-        rdao.searchRecipe(searchWord).enqueue(object : Callback<CRUD> {
-            override fun onResponse(call: Call<CRUD>, response: Response<CRUD>) {
-                val liste = response.body()!!.recipe
-                recipeList.value = liste
-            }
-            override fun onFailure(call: Call<CRUD>, t: Throwable) {
-            }
-        })
-    }
-
-
-/*
-//tarif güncellemek için
-fun updateRecipe(recipe_id: Int, recipe_name: String, recipe_content: String) {
-        rdao.updateRecipe(recipe_id,recipe_name,recipe_content).enqueue(object : Callback<CRUD>{
-            override fun onResponse(call: Call<CRUD>, response: Response<CRUD>) {
-                val succes = response.body()?.success
-                val mesage = response.body()?.message
-                Log.e("Tarif Güncelle", "$succes - $mesage")
-                getAllRecipe()
-            }
-            override fun onFailure(call: Call<CRUD>, t: Throwable) {
-            }
-        })
-
-    }
- */
-    fun getAllRecipe(){
-        rdao.allRecipe().enqueue(object : Callback<CRUD> {
-            override fun onResponse(call: Call<CRUD>?, response: Response<CRUD>) {
-                val list = response.body()!!.recipe
-                recipeList.value = list
-            }
-
-            override fun onFailure(call: Call<CRUD>?, t: Throwable?) {
-            }
-
-        })
-        Log.e("veriler","${rdao.allRecipe()}")
-    }
-
+    suspend fun foodSearch(searchWord:String) = rdao.foodSearch(searchWord)
 
 }

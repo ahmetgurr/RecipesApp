@@ -8,49 +8,48 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.sisterslabprojectrecipes.R
 import com.example.sisterslabprojectrecipes.adapter.RecipeRecyclerAdapter
-import com.example.sisterslabprojectrecipes.databinding.FragmentAddBinding
 import com.example.sisterslabprojectrecipes.databinding.FragmentRecipeListBinding
 import com.example.sisterslabprojectrecipes.util.gecisYap
-import com.example.sisterslabprojectrecipes.viewmodel.AddViewModel
 import com.example.sisterslabprojectrecipes.viewmodel.RecipeListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
-    private lateinit var tasarim: FragmentRecipeListBinding
+    private lateinit var binding: FragmentRecipeListBinding
     private lateinit var viewModel: RecipeListViewModel
-   // private val viewModel: RecipeListViewModel by viewModels()
+    private lateinit var adapter: RecipeRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = FragmentRecipeListBinding.inflate(inflater, container, false)
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)//toolbarı bağladık
 
-        //tasarim = FragmentRecipeListBinding.inflate(inflater)
-        //tasarımı bağladık
-        tasarim = DataBindingUtil.inflate(inflater, R.layout.fragment_recipe_list, container, false)
-        tasarim.recipeListFragment = this
+        val tempViewModel: RecipeListViewModel by viewModels()
+        viewModel = tempViewModel
 
-        tasarim.recipeListToolBarName = "Tarifler"
-        (activity as AppCompatActivity).setSupportActionBar(tasarim.toolbar)//toolbarı bağladık
+        binding.recipeListFragment = this
+
+        viewModel.getRecipes()
 
 
-        viewModel.recipeList.observe(viewLifecycleOwner) { data ->
-            if (data != null) {
-                val adapter = RecipeRecyclerAdapter(requireContext(), data, viewModel)
-                tasarim.racipeListRV.adapter = adapter
-            }
+        viewModel.recipesList.observe(viewLifecycleOwner) {
+            adapter = RecipeRecyclerAdapter(it, viewModel)
+            binding.racipeListRV.adapter = adapter
+            adapter.notifyDataSetChanged()
         }
 
             requireActivity().addMenuProvider(object : MenuProvider {
@@ -67,32 +66,41 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        return tasarim.root
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: RecipeListViewModel by viewModels()
-        viewModel = tempViewModel
+        return binding.root
     }
 
     fun fabClick(it: View) {
         Navigation.gecisYap(R.id.action_recipeListFragment_to_addFragment, it)
     }
 
-    override fun onQueryTextSubmit(query: String): Boolean {
-        viewModel.search(query)
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        viewLifecycleOwner.lifecycleScope.launch {
+            if (query != null) {
+                viewModel.foodSearch(query)
+                viewModel.recipeSearch.observe(viewLifecycleOwner) {
+                    adapter = RecipeRecyclerAdapter(it.recipes, viewModel)
+                    binding.racipeListRV.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
         return true
     }
 
-    override fun onQueryTextChange(newText: String): Boolean {
-        viewModel.search(newText)
+    override fun onQueryTextChange(newText: String?): Boolean {
+        viewLifecycleOwner.lifecycleScope.launch {
+            if (newText != null) {
+                viewModel.foodSearch(newText)
+                viewModel.recipeSearch.observe(viewLifecycleOwner) {
+                    adapter = RecipeRecyclerAdapter(it.recipes, viewModel)
+                    binding.racipeListRV.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
         return true
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadRecipe()
-    }
 
 
 }

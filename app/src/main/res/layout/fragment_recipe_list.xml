@@ -3,15 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/beige"
-    >
+    android:background="@color/beige">
 
     <data>
-        <variable name="recipeListToolBarName" type="String" />
         <variable name="recipeListFragment" type="com.example.sisterslabprojectrecipes.view.RecipeListFragment" />
     </data>
-
-
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -38,7 +34,7 @@
         android:background="?attr/colorOnError"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:title="@{recipeListToolBarName}"
+        app:title="Tarifler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
