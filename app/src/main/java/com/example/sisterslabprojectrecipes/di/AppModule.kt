@@ -8,7 +8,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-
 // @Provides ->  provides an instance of the type that this function returns
 //               bağımlılığın nasıl oluşturulacağını belirtmek için
 // @Singleton -> tells Dagger that there should only be a single instance of this class in the app

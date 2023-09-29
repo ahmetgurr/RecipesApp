@@ -3,10 +3,8 @@ package com.example.sisterslabprojectrecipes.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sisterslabprojectrecipes.model.BaseRecipes
 import com.example.sisterslabprojectrecipes.model.Recipe
 import com.example.sisterslabprojectrecipes.model.RecipeX
-import com.example.sisterslabprojectrecipes.model.RecipesAnswer
 import com.example.sisterslabprojectrecipes.repository.RecipeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -18,8 +16,6 @@ import javax.inject.Inject
 @HiltViewModel
 class RecipeListViewModel @Inject constructor(var rrepo : RecipeRepository) : ViewModel() {
     var recipesList = MutableLiveData<List<Recipe>>()
-    var recipeAdd = MutableLiveData<BaseRecipes?>()
-    var recipeUpdate = MutableLiveData<BaseRecipes?>()
     var recipeSearch = MutableLiveData<RecipeX>()
 
     fun getRecipes() {
