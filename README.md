@@ -27,7 +27,7 @@ SistersLab Akademi Kotlin ile Android Mobil Uygulama Geliştirme Bootcamp Bitirm
 
 | Recipe List | SearchView |
 | ------ | ------ |
-| ![Recipe List](https://github.com/ahmetgurr/RecipesApp/assets/92628011/623f99c6-1d67-412e-95db-eb59b945c172 width="250" height="500"/>) | ![SearchView](https://github.com/ahmetgurr/RecipesApp/assets/92628011/a2be481b-1e6d-46d9-90e5-b6cc9fea0c72)
+| ![Recipe List]("https://github.com/ahmetgurr/RecipesApp/assets/92628011/623f99c6-1d67-412e-95db-eb59b945c172" width="250" height="500") | ![SearchView](https://github.com/ahmetgurr/RecipesApp/assets/92628011/a2be481b-1e6d-46d9-90e5-b6cc9fea0c72)
 
 
 </br>
