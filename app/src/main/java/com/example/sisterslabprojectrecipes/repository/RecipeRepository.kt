@@ -17,6 +17,6 @@ class RecipeRepository (var rdao : RecipeDao){
     //tarif detayı çekmek
     suspend fun recipeDetail(id:Int) = rdao.recipeDetail(id)
     //tarif aramak
-    suspend fun recipeSearch(searchWord:String) = rdao.foodSearch(searchWord)
+    suspend fun recipeSearch(searchWord:String) = rdao.recipeSearch(searchWord)
 
 }

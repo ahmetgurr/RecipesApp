@@ -14,10 +14,10 @@ import retrofit2.http.Query
 
 //Field =
 
-//Query = veri çekmek ve işlemek için kullanılır
+// Query = veri çekmek ve işlemek için kullanılır
 // GET veri çekmek
 // POST veri yolllamak
-//DAO Data Access Object= Veri Erişim Nesnesi /  veritabanı işlemlerini yönetmek için kullanılan bir tasarım desenidir
+// DAO Data Access Object= Veri Erişim Nesnesi /  veritabanı işlemlerini yönetmek için kullanılan bir tasarım desenidir
 interface RecipeDao {
 
 
@@ -25,7 +25,7 @@ interface RecipeDao {
     suspend fun recipes(): Response<RecipesAnswer>
 
     @GET("search_recipe.php")
-    suspend fun foodSearch(@Query("query") query: String): Response<RecipeX>
+    suspend fun recipeSearch(@Query("query") query: String): Response<RecipeX>
 
     @GET("get_recipe_detail.php")
     suspend fun recipeDetail(@Query("id") id: Int): Response<DetailResponse>

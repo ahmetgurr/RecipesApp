@@ -28,7 +28,6 @@ class AddFragment : Fragment() {
         binding = FragmentAddBinding.inflate(inflater,container,false)
         val tempViewModel: AddViewModel by viewModels()
         viewModel = tempViewModel
-
         //binding.viewModel = viewModel
         //binding.addToolbarName = "Tarif Ekle"
         return binding.root

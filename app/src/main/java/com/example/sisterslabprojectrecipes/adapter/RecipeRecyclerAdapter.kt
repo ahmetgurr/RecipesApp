@@ -17,13 +17,13 @@ class RecipeRecyclerAdapter(
     var viewModel: RecipeListViewModel
 ) : RecyclerView.Adapter<RecipeRecyclerAdapter.RecipeViewHolder>() {
 
-    inner class RecipeViewHolder(tasarim: ItemRecipeBinding) :
-        RecyclerView.ViewHolder(tasarim.root) {
+    inner class RecipeViewHolder(binding: ItemRecipeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        var tasarim: ItemRecipeBinding
+        var binding: ItemRecipeBinding
 
         init {
-            this.tasarim = tasarim
+            this.binding = binding
         }
     }
 
@@ -40,7 +40,7 @@ class RecipeRecyclerAdapter(
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val recipe = recipeList.get(position)
-        val t = holder.tasarim
+        val t = holder.binding
 
         t.selectedRecipe = recipe
 

@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -75,7 +74,7 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onQueryTextSubmit(query: String?): Boolean {
         viewLifecycleOwner.lifecycleScope.launch {
             if (query != null) {
-                viewModel.foodSearch(query)
+                viewModel.searchRecipe(query)
                 viewModel.recipeSearch.observe(viewLifecycleOwner) {
                     adapter = RecipeRecyclerAdapter(it.recipes, viewModel)
                     binding.racipeListRV.adapter = adapter
@@ -89,7 +88,7 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onQueryTextChange(newText: String?): Boolean {
         viewLifecycleOwner.lifecycleScope.launch {
             if (newText != null) {
-                viewModel.foodSearch(newText)
+                viewModel.searchRecipe(newText)
                 viewModel.recipeSearch.observe(viewLifecycleOwner) {
                     adapter = RecipeRecyclerAdapter(it.recipes, viewModel)
                     binding.racipeListRV.adapter = adapter
