@@ -21,7 +21,6 @@ class RecipeRecyclerAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         var binding: ItemRecipeBinding
-
         init {
             this.binding = binding
         }
@@ -51,7 +50,6 @@ class RecipeRecyclerAdapter(
             Navigation.gecisYap(it, gecis)
         }
     }
-
 }
 
 

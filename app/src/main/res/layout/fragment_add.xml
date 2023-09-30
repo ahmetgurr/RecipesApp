@@ -84,6 +84,8 @@
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
         android:text="Kaydet"
+        app:icon="@drawable/add_image"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

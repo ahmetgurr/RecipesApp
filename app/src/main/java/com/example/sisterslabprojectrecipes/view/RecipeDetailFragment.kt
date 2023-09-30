@@ -22,7 +22,6 @@ class RecipeDetailFragment : Fragment() {
     private lateinit var viewModel: RecipeDetailViewModel
     val args: RecipeDetailFragmentArgs by navArgs()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel : RecipeDetailViewModel by viewModels ()
@@ -35,7 +34,7 @@ class RecipeDetailFragment : Fragment() {
 
         binding = FragmentRecipeDetailBinding.inflate(inflater,container,false)
         binding.viewModel = viewModel
-        binding.recipeDetailToolbarName = "Tarif Detay"
+        binding.recipeDetailToolbarName = "Tarif Detay"//binding ile toolbar ismi değiştirme
 
         val recipeId = args.recipeId
 
@@ -67,7 +66,6 @@ class RecipeDetailFragment : Fragment() {
         }
         return binding.root
     }
-
 }
 
 

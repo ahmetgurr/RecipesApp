@@ -47,7 +47,7 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
         viewModel.recipesList.observe(viewLifecycleOwner) {
             adapter = RecipeRecyclerAdapter(it, viewModel)
             binding.racipeListRV.adapter = adapter
-            adapter.notifyDataSetChanged()
+            adapter.notifyDataSetChanged()//güncelleme işlemi
         }
 
             requireActivity().addMenuProvider(object : MenuProvider {

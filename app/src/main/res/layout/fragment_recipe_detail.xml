@@ -85,6 +85,8 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:text="Güncelle"
+            app:icon="@drawable/update_image"
+            style="@style/Widget.MaterialComponents.Button.Icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"

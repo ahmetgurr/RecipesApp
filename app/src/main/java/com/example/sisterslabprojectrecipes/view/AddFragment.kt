@@ -24,12 +24,9 @@ class AddFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //binding = DataBindingUtil.inflate(inflater,R.layout.fragment_add,container,false)
         binding = FragmentAddBinding.inflate(inflater,container,false)
         val tempViewModel: AddViewModel by viewModels()
         viewModel = tempViewModel
-        //binding.viewModel = viewModel
-        //binding.addToolbarName = "Tarif Ekle"
         return binding.root
     }
 

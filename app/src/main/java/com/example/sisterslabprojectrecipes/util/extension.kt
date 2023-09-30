@@ -11,7 +11,6 @@ import androidx.navigation.Navigation
 fun Navigation.gecisYap(id:Int, it: View) {
     findNavController(it).navigate(id)
 }
-
 //recyclerviewdeki itemlara tıklandıgında gecis yapmak için
 fun Navigation.gecisYap(it: View, id: NavDirections){
     findNavController(it).navigate(id)
