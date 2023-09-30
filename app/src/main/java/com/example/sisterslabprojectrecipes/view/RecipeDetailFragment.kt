@@ -34,7 +34,7 @@ class RecipeDetailFragment : Fragment() {
 
         binding = FragmentRecipeDetailBinding.inflate(inflater,container,false)
         binding.viewModel = viewModel
-        binding.recipeDetailToolbarName = "Tarif Detay"//binding ile toolbar ismi değiştirme
+        binding.recipeDetailToolbarName = "Tarif Detay"//binding ile ismi değişme
 
         val recipeId = args.recipeId
 
@@ -66,6 +66,7 @@ class RecipeDetailFragment : Fragment() {
         }
         return binding.root
     }
+
 }
 
 

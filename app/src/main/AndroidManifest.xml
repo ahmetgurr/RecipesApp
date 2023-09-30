@@ -16,7 +16,9 @@
         android:roundIcon="@drawable/chefrecipe"
         android:supportsRtl="true"
         android:theme="@style/Theme.SistersLabProjectRecipes"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:parentActivityName=".RecipeListFragment"
+        >
         <activity
             android:name=".MainActivity"
             android:exported="true">
