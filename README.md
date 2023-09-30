@@ -23,8 +23,8 @@ SistersLab Akademi Kotlin ile Android Mobil Uygulama Geliştirme Bootcamp Bitirm
  
 | Recipes-App video |
 | ---------------------------- |
-[ekankaydirecipe.webm](https://github.com/ahmetgurr/RecipesApp/assets/92628011/e76ad64c-2324-46aa-b42b-36e821f0d22c)
 
+https://github.com/ahmetgurr/RecipesApp/assets/92628011/51473311-6fcb-4070-862b-28896456062d
 
 
 ## Home Screen
