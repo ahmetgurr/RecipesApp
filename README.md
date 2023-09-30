@@ -21,7 +21,8 @@ SistersLab Akademi Kotlin ile Android Mobil Uygulama Geliştirme Bootcamp Bitirm
  
  ## Video
  
-https://clipchamp.com/watch/lqNNcxWqTYX
+[Uploading ekankaydirecipe.webm…]()
+
 
 ## Home Screen
 
