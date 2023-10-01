@@ -28,9 +28,8 @@ class RecipeRecyclerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val tasarim: ItemRecipeBinding =
-            DataBindingUtil.inflate(layoutInflater, R.layout.item_recipe, parent, false)
-        return RecipeViewHolder(tasarim)
+        val view: ItemRecipeBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_recipe, parent, false)
+        return RecipeViewHolder(view)
     }
 
     override fun getItemCount(): Int {

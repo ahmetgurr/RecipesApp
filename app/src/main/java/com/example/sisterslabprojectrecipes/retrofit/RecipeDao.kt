@@ -16,6 +16,8 @@ import retrofit2.http.Query
 // GET veri çekmek
 // POST veri yolllamak
 // DAO Data Access Object= Veri Erişim Nesnesi /  veritabanı işlemlerini yönetmek için kullanılan bir tasarım desenidir
+// Response = API ile iletişim kurma soncudur / veri alma veya gönderme işkemi için kullanılır.
+// Request = API'ye istek gönderme sonucudur
 interface RecipeDao {
 
     @GET("get_recipes.php")

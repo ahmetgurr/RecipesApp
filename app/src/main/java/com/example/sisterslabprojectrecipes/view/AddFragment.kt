@@ -34,11 +34,11 @@ class AddFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonUpdate.setOnClickListener {
-            val foodName = binding.editTextAddName.text.toString()
-            val recipe = binding.editTextAddContent.text.toString()
+            val recipeName = binding.editTextAddName.text.toString()
+            val recipeContent = binding.editTextAddContent.text.toString()
 
             viewLifecycleOwner.lifecycleScope.launch {
-                viewModel.addRecipes(foodName, recipe)
+                viewModel.addRecipes(recipeName, recipeContent)
             }
 
             viewModel.recipeAdd.observe(viewLifecycleOwner) { recipe ->

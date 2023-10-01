@@ -12,17 +12,17 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-
+//LiveDatalar verileri tutar ve gözlemlenebilir yapılardır.
 @HiltViewModel
 class RecipeListViewModel @Inject constructor(var rrepo : RecipeRepository) : ViewModel() {
     var recipesList = MutableLiveData<List<Recipe>>()
     var recipeSearch = MutableLiveData<RecipeX>()
 
     fun getRecipes() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) { //Ağ isteği / API'den veri çekme.
             val response = rrepo.getRecipes()
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
+            withContext(Dispatchers.Main) {     //verileri alma
+                if (response.isSuccessful) {                    //başarılı ise güncelleme
                     recipesList.value = response.body()?.recipes
                 } else {
                 }

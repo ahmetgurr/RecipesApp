@@ -14,7 +14,7 @@ import javax.inject.Singleton
 //               bir bağımlılığın tek bir örneğinin olduğunu belirtmek için
 // @InstallIn -> tells Dagger which Android class(es) should be used to create instances of the dependencies
 //               bağımlılıkların nasıl oluşturulacağını belirtmek için
-//@Module ->     tells Dagger that this class is a Dagger Module
+// @Module ->    tells Dagger that this class is a Dagger Module
 //               Dagger'a bu sınıfın bir Dagger Modülü olduğunu söyler
 @Module
 @InstallIn(SingletonComponent::class)

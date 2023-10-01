@@ -5,20 +5,18 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
+        android:name=".di.HiltApplication"
         android:allowBackup="true"
-        android:name="com.example.sisterslabprojectrecipes.di.HiltApplication"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/chefrecipe"
         android:label="@string/app_name"
+        android:parentActivityName=".RecipeListFragment"
         android:roundIcon="@drawable/chefrecipe"
         android:supportsRtl="true"
         android:theme="@style/Theme.SistersLabProjectRecipes"
-        tools:targetApi="31"
-        android:parentActivityName=".RecipeListFragment"
-        >
+        tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:exported="true">

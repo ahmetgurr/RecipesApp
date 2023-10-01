@@ -47,11 +47,11 @@ class RecipeDetailFragment : Fragment() {
         }
 
         binding.buttonUpdate.setOnClickListener {
-            val foodName = binding.editTextAddName.text.toString()
-            val recipe = binding.editTextAddContent.text.toString()
+            val recipeName = binding.editTextAddName.text.toString()
+            val recipeContent = binding.editTextAddContent.text.toString()
 
             viewLifecycleOwner.lifecycleScope.launch {
-                viewModel.recipeUpdate(args.recipeId, foodName, recipe)
+                viewModel.recipeUpdate(args.recipeId, recipeName, recipeContent)
             }
 
             viewModel.recipeDetail.observe(viewLifecycleOwner) { recipe ->

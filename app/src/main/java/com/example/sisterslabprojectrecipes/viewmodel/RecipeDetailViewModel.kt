@@ -3,7 +3,6 @@ package com.example.sisterslabprojectrecipes.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sisterslabprojectrecipes.model.BaseRecipe
 import com.example.sisterslabprojectrecipes.model.DetailResponse
 import com.example.sisterslabprojectrecipes.model.Recipe
 import com.example.sisterslabprojectrecipes.repository.RecipeRepository
@@ -19,9 +18,9 @@ class RecipeDetailViewModel  @Inject constructor (var rrepo : RecipeRepository):
     var recipeDetail = MutableLiveData<DetailResponse?>()
     var recipeUpdateToast = MutableLiveData<String?>()
 
-    suspend fun recipeDetail(id: Int) {
+    suspend fun recipeDetail(recipeId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = rrepo.recipeDetail(id)
+            val response = rrepo.recipeDetail(recipeId)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     recipeDetail.value = response.body()
@@ -30,8 +29,8 @@ class RecipeDetailViewModel  @Inject constructor (var rrepo : RecipeRepository):
             }
         }
     }
-    suspend fun recipeUpdate(recipeId: Int, recipeName: String, recipe: String){
-        val recipe = Recipe(recipeId,recipeName,recipe)
+    suspend fun recipeUpdate(recipeId: Int, recipeName: String, recipeContent: String){
+        val recipe = Recipe(recipeId,recipeName,recipeContent)
         viewModelScope.launch(Dispatchers.IO) {
             val response = rrepo.recipeUpdate(recipe)
             withContext(Dispatchers.Main) {
