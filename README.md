@@ -31,7 +31,9 @@ https://github.com/ahmetgurr/RecipesApp/assets/92628011/51473311-6fcb-4070-862b-
 
 | Recipe List | SearchView |
 | ---------------------------- | ---------------------------- |
-| ![Recipe List](https://github.com/ahmetgurr/RecipesApp/assets/92628011/623f99c6-1d67-412e-95db-eb59b945c172) | ![SearchView](https://github.com/ahmetgurr/RecipesApp/assets/92628011/a2be481b-1e6d-46d9-90e5-b6cc9fea0c72)
+| ![Recipe List](![listPage](https://github.com/ahmetgurr/RecipesApp/assets/92628011/5ea77594-ce9b-4143-921e-9d4ccda52664)
+) | ![SearchView](![search](https://github.com/ahmetgurr/RecipesApp/assets/92628011/84a6b645-bb9a-481d-9549-5756d16e7e2b)
+)
 
 
 </br>
