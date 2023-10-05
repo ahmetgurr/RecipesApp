@@ -5,10 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/beige">
 
-    <data>
-        <variable name="recipeListFragment" type="com.example.sisterslabprojectrecipes.view.RecipeListFragment" />
-    </data>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,7 +43,6 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:clickable="true"
-        android:onClick="@{() -> recipeListFragment.fabClick(fab)}"
         android:text="Tarif Ekle"
         android:textColor="@color/white"
         app:iconTint="@color/white"

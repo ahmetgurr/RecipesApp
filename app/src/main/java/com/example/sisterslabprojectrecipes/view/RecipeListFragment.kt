@@ -13,6 +13,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.sisterslabprojectrecipes.R
@@ -40,14 +41,14 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
         val tempViewModel: RecipeListViewModel by viewModels()
         viewModel = tempViewModel
 
-        binding.recipeListFragment = this
+        //binding.recipeListFragment = this// viewBinding ile yapınca gerek kalamdı xml deki data yı da sildik
 
-        viewModel.getRecipes()
+        viewModel.getRecipes()//viewModeldeki fonksiyonu çağırarak verileri çekme.
 
         viewModel.recipesList.observe(viewLifecycleOwner) {
             adapter = RecipeRecyclerAdapter(it, viewModel)
             binding.racipeListRV.adapter = adapter
-            adapter.notifyDataSetChanged()//güncelleme işlemi
+            adapter.notifyDataSetChanged()//viewModeldeki liveData değişirse güncelleme yapar.
         }
 
             requireActivity().addMenuProvider(object : MenuProvider {
@@ -62,15 +63,20 @@ class RecipeListFragment : Fragment(), SearchView.OnQueryTextListener {
                 return false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        //viewBinding ile geçiş işlemi
+        binding.fab.setOnClickListener{
+            Navigation.gecisYap(R.id.action_recipeListFragment_to_addFragment,it)
+        }
 
         return binding.root
     }
-
-    //ekleme sayfasına geçiş
+/*
+    //ekleme sayfasına dataBinding ile geçiş
     fun fabClick(it: View) {
         Navigation.gecisYap(R.id.action_recipeListFragment_to_addFragment, it)
     }
 
+ */
     override fun onQueryTextSubmit(query: String?): Boolean {
         viewLifecycleOwner.lifecycleScope.launch {
             if (query != null) {

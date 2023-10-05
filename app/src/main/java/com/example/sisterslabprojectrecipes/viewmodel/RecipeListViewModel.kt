@@ -12,7 +12,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-//LiveDatalar verileri tutar ve gözlemlenebilir yapılardır.
+//LiveDatalar verileri tutar ve gözlemlenebilir yapılardır. veri değişikliklerini iletir.
+//viewModelScope = ViewModel'in yaşam döngüsü boyunca çalışır, sona erdiğninde otomatik olarak iptal edilir. veri kaybını önler.
+// fragmentlerden bagımsızdır. ağ istekleri için kullanılır.
 @HiltViewModel
 class RecipeListViewModel @Inject constructor(var rrepo : RecipeRepository) : ViewModel() {
     var recipesList = MutableLiveData<List<Recipe>>()

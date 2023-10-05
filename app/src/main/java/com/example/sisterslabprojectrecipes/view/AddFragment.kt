@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.sisterslabprojectrecipes.databinding.FragmentAddBinding
 import com.example.sisterslabprojectrecipes.viewmodel.AddViewModel
+import com.example.sisterslabprojectrecipes.viewmodel.RecipeDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -18,21 +19,16 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class AddFragment : Fragment() {
     private lateinit var binding: FragmentAddBinding
-    private lateinit var viewModel: AddViewModel
+    //private lateinit var viewModel: AddViewModel
+    private val viewModel: AddViewModel by viewModels() //viewModeli tanıtma
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddBinding.inflate(inflater,container,false)
-        val tempViewModel: AddViewModel by viewModels()
-        viewModel = tempViewModel
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+        //val tempViewModel: AddViewModel by viewModels()
+        //viewModel = tempViewModel
         binding.buttonUpdate.setOnClickListener {
             val recipeName = binding.editTextAddName.text.toString()
             val recipeContent = binding.editTextAddContent.text.toString()
@@ -51,5 +47,6 @@ class AddFragment : Fragment() {
                 }
             }
         }
+        return binding.root
     }
 }

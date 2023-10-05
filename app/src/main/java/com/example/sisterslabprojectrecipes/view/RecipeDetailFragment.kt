@@ -19,31 +19,34 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RecipeDetailFragment : Fragment() {
     private lateinit var binding: FragmentRecipeDetailBinding
-    private lateinit var viewModel: RecipeDetailViewModel
+    //private lateinit var viewModel: RecipeDetailViewModel
     val args: RecipeDetailFragmentArgs by navArgs()
+    private val viewModel: RecipeDetailViewModel by viewModels() //viewModeli tanıtma
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel : RecipeDetailViewModel by viewModels ()
-        viewModel = tempViewModel
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         binding = FragmentRecipeDetailBinding.inflate(inflater,container,false)
-        binding.viewModel = viewModel
-        binding.recipeDetailToolbarName = "Tarif Detay"//binding ile ismi değişme
+        //binding.viewModel = viewModel
+        //binding.recipeDetailToolbarName = "Tarif Detay"//binding ile ismi değişme
 
         val recipeId = args.recipeId
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.recipeDetail(recipeId)
         }
-
-        viewModel.recipeDetail.observe(viewLifecycleOwner) { recipe ->
+/*
+        //dataBinding ile
+        viewModel.recipeDetail.observe(viewLifecycleOwner) { recipe -> // dataBinding ile verileri xml'de gözlemleme
             binding.recipeObject = recipe?.recipe
+        }
+ */
+
+        //viewBinding ile verileri gösterme
+        viewModel.recipeDetail.observe(viewLifecycleOwner) { recipe ->
+            binding.editTextAddName.setText(recipe?.recipe?.recipe_name)
+            binding.editTextAddContent.setText(recipe?.recipe?.recipe_content)
         }
 
         binding.buttonUpdate.setOnClickListener {
