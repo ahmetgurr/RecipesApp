@@ -24,31 +24,27 @@ SistersLab Akademi Kotlin ile Android Mobil Uygulama Geliştirme Bootcamp Bitirm
 | Recipes-App video |
 | ---------------------------- |
 
-https://github.com/ahmetgurr/RecipesApp/assets/92628011/51473311-6fcb-4070-862b-28896456062d
+[ekankaydirecipe.webm](https://github.com/ahmetgurr/RecipesApp/assets/92628011/23c6a8b4-aed9-4cdd-a97c-dcd7faa99d46)
 
 
 ## Home Screen
 
 | Recipe List | SearchView |
 | ---------------------------- | ---------------------------- |
-| ![Recipe List](https://github.com/ahmetgurr/RecipesApp/assets/92628011/623f99c6-1d67-412e-95db-eb59b945c172) | ![SearchView](https://github.com/ahmetgurr/RecipesApp/assets/92628011/a2be481b-1e6d-46d9-90e5-b6cc9fea0c72)
-
+|![listPage](https://github.com/ahmetgurr/RecipesApp/assets/92628011/6922b5e0-1242-4cc1-930e-67b9b07a9358)| ![search](https://github.com/ahmetgurr/RecipesApp/assets/92628011/e0f4fc89-695c-4e10-abf3-49d7c2c3d046)|
 
 </br>
 
 ## Detail Screen
 | Detail | Update |
 | ---------------------------- | ---------------------------- |
-| ![Detail Page](https://github.com/ahmetgurr/RecipesApp/assets/92628011/20b75722-5bcc-4af3-9e8a-533c364b2b85) | ![Detail Successful](https://github.com/ahmetgurr/RecipesApp/assets/92628011/11935433-6281-44bf-8551-548e4c8e0066)
-
-
+|![detailPage](https://github.com/ahmetgurr/RecipesApp/assets/92628011/ca3ae95c-d0e3-4999-8408-171b0e9e0d1d)| ![detailSuccesful](https://github.com/ahmetgurr/RecipesApp/assets/92628011/2c88198f-d049-487d-98f9-65b2d3d76d6a)|
 
 </br>
 
 ## Add Screen
 | Add | Add Successful |
 | ---------------------------- | ---------------------------- |
-|![Add Page](https://github.com/ahmetgurr/RecipesApp/assets/92628011/3ceda140-34f7-426b-8267-5f255f025994) | ![Add Successful](https://github.com/ahmetgurr/RecipesApp/assets/92628011/ba9494b5-dedc-4b3b-aebe-2e81dae165fb)|
-
+|![addPage](https://github.com/ahmetgurr/RecipesApp/assets/92628011/f50af018-d88b-4802-809a-3bdc7dd5cc40)| ![addSuccesful](https://github.com/ahmetgurr/RecipesApp/assets/92628011/e18b60dd-30a9-4c62-b517-a25aaaa0a91c)|
 
 </br>
