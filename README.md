@@ -1,6 +1,6 @@
 # RecipesApp
 
-SistersLab Akademi Kotlin ile Android Mobil Uygulama Geliştirme Bootcamp Bitirme Projesi : Racipe App
+Kotlin ile Android Mobil Uygulama Geliştirme Projesi : Recipe App
 
 ## Architecture
 
